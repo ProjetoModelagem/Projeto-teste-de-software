@@ -1,0 +1,232 @@
+<html><body><h1>src/models/base.py</h1>Killed 76 out of 97 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 30</h3><pre>--- src/models/base.py
++++ src/models/base.py
+@@ -6,7 +6,7 @@
+     pass
+ 
+ class Author(Base):
+-    __tablename__ = "author"
++    __tablename__ = None
+     author_id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+     author_nm: Mapped[str] = mapped_column(String(120), nullable=False)
+     country_nm: Mapped[str] = mapped_column(String(80), nullable=True)
+</pre><h3>Mutant 31</h3><pre>--- src/models/base.py
++++ src/models/base.py
+@@ -7,7 +7,7 @@
+ 
+ class Author(Base):
+     __tablename__ = "author"
+-    author_id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
++    author_id: Mapped[int] = mapped_column(Integer, primary_key=False, autoincrement=True)
+     author_nm: Mapped[str] = mapped_column(String(120), nullable=False)
+     country_nm: Mapped[str] = mapped_column(String(80), nullable=True)
+     books = relationship("Book", back_populates="author")
+</pre><h3>Mutant 33</h3><pre>--- src/models/base.py
++++ src/models/base.py
+@@ -7,7 +7,7 @@
+ 
+ class Author(Base):
+     __tablename__ = "author"
+-    author_id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
++    author_id: Mapped[int] = None
+     author_nm: Mapped[str] = mapped_column(String(120), nullable=False)
+     country_nm: Mapped[str] = mapped_column(String(80), nullable=True)
+     books = relationship("Book", back_populates="author")
+</pre><h3>Mutant 44</h3><pre>--- src/models/base.py
++++ src/models/base.py
+@@ -13,7 +13,7 @@
+     books = relationship("Book", back_populates="author")
+ 
+ class Book(Base):
+-    __tablename__ = "book"
++    __tablename__ = None
+     book_id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+     title_nm: Mapped[str] = mapped_column(String(200), nullable=False)
+     genre_nm: Mapped[str] = mapped_column(String(80), nullable=True)
+</pre><h3>Mutant 45</h3><pre>--- src/models/base.py
++++ src/models/base.py
+@@ -14,7 +14,7 @@
+ 
+ class Book(Base):
+     __tablename__ = "book"
+-    book_id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
++    book_id: Mapped[int] = mapped_column(Integer, primary_key=False, autoincrement=True)
+     title_nm: Mapped[str] = mapped_column(String(200), nullable=False)
+     genre_nm: Mapped[str] = mapped_column(String(80), nullable=True)
+     year_nbr: Mapped[int] = mapped_column(Integer, nullable=True)
+</pre><h3>Mutant 47</h3><pre>--- src/models/base.py
++++ src/models/base.py
+@@ -14,7 +14,7 @@
+ 
+ class Book(Base):
+     __tablename__ = "book"
+-    book_id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
++    book_id: Mapped[int] = None
+     title_nm: Mapped[str] = mapped_column(String(200), nullable=False)
+     genre_nm: Mapped[str] = mapped_column(String(80), nullable=True)
+     year_nbr: Mapped[int] = mapped_column(Integer, nullable=True)
+</pre><h3>Mutant 66</h3><pre>--- src/models/base.py
++++ src/models/base.py
+@@ -23,7 +23,7 @@
+     loans = relationship("Loan", back_populates="book")
+ 
+ class Member(Base):
+-    __tablename__ = "member"
++    __tablename__ = None
+     member_id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+     member_nm: Mapped[str] = mapped_column(String(120), nullable=False)
+     email_nm: Mapped[str] = mapped_column(String(200), nullable=False, unique=True)
+</pre><h3>Mutant 67</h3><pre>--- src/models/base.py
++++ src/models/base.py
+@@ -24,7 +24,7 @@
+ 
+ class Member(Base):
+     __tablename__ = "member"
+-    member_id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
++    member_id: Mapped[int] = mapped_column(Integer, primary_key=False, autoincrement=True)
+     member_nm: Mapped[str] = mapped_column(String(120), nullable=False)
+     email_nm: Mapped[str] = mapped_column(String(200), nullable=False, unique=True)
+     join_dt: Mapped[date] = mapped_column(Date, default=date.today)
+</pre><h3>Mutant 69</h3><pre>--- src/models/base.py
++++ src/models/base.py
+@@ -24,7 +24,7 @@
+ 
+ class Member(Base):
+     __tablename__ = "member"
+-    member_id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
++    member_id: Mapped[int] = None
+     member_nm: Mapped[str] = mapped_column(String(120), nullable=False)
+     email_nm: Mapped[str] = mapped_column(String(200), nullable=False, unique=True)
+     join_dt: Mapped[date] = mapped_column(Date, default=date.today)
+</pre><h3>Mutant 85</h3><pre>--- src/models/base.py
++++ src/models/base.py
+@@ -32,7 +32,7 @@
+     payments = relationship("Payment", back_populates="member")
+ 
+ class Loan(Base):
+-    __tablename__ = "loan"
++    __tablename__ = None
+     loan_id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+     member_id: Mapped[int] = mapped_column(ForeignKey("member.member_id"), nullable=False)
+     book_id: Mapped[int] = mapped_column(ForeignKey("book.book_id"), nullable=False)
+</pre><h3>Mutant 86</h3><pre>--- src/models/base.py
++++ src/models/base.py
+@@ -33,7 +33,7 @@
+ 
+ class Loan(Base):
+     __tablename__ = "loan"
+-    loan_id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
++    loan_id: Mapped[int] = mapped_column(Integer, primary_key=False, autoincrement=True)
+     member_id: Mapped[int] = mapped_column(ForeignKey("member.member_id"), nullable=False)
+     book_id: Mapped[int] = mapped_column(ForeignKey("book.book_id"), nullable=False)
+     start_dt: Mapped[date] = mapped_column(Date, default=date.today)
+</pre><h3>Mutant 88</h3><pre>--- src/models/base.py
++++ src/models/base.py
+@@ -33,7 +33,7 @@
+ 
+ class Loan(Base):
+     __tablename__ = "loan"
+-    loan_id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
++    loan_id: Mapped[int] = None
+     member_id: Mapped[int] = mapped_column(ForeignKey("member.member_id"), nullable=False)
+     book_id: Mapped[int] = mapped_column(ForeignKey("book.book_id"), nullable=False)
+     start_dt: Mapped[date] = mapped_column(Date, default=date.today)
+</pre><h3>Mutant 97</h3><pre>--- src/models/base.py
++++ src/models/base.py
+@@ -37,7 +37,7 @@
+     member_id: Mapped[int] = mapped_column(ForeignKey("member.member_id"), nullable=False)
+     book_id: Mapped[int] = mapped_column(ForeignKey("book.book_id"), nullable=False)
+     start_dt: Mapped[date] = mapped_column(Date, default=date.today)
+-    due_dt: Mapped[date] = mapped_column(Date, nullable=False)
++    due_dt: Mapped[date] = None
+     return_dt: Mapped[date | None] = mapped_column(Date, nullable=True)
+     member = relationship("Member", back_populates="loans")
+     book = relationship("Book", back_populates="loans")
+</pre><h3>Mutant 98</h3><pre>--- src/models/base.py
++++ src/models/base.py
+@@ -38,7 +38,7 @@
+     book_id: Mapped[int] = mapped_column(ForeignKey("book.book_id"), nullable=False)
+     start_dt: Mapped[date] = mapped_column(Date, default=date.today)
+     due_dt: Mapped[date] = mapped_column(Date, nullable=False)
+-    return_dt: Mapped[date | None] = mapped_column(Date, nullable=True)
++    return_dt: Mapped[date & None] = mapped_column(Date, nullable=True)
+     member = relationship("Member", back_populates="loans")
+     book = relationship("Book", back_populates="loans")
+ 
+</pre><h3>Mutant 100</h3><pre>--- src/models/base.py
++++ src/models/base.py
+@@ -38,7 +38,7 @@
+     book_id: Mapped[int] = mapped_column(ForeignKey("book.book_id"), nullable=False)
+     start_dt: Mapped[date] = mapped_column(Date, default=date.today)
+     due_dt: Mapped[date] = mapped_column(Date, nullable=False)
+-    return_dt: Mapped[date | None] = mapped_column(Date, nullable=True)
++    return_dt: Mapped[date | None] = None
+     member = relationship("Member", back_populates="loans")
+     book = relationship("Book", back_populates="loans")
+ 
+</pre><h3>Mutant 108</h3><pre>--- src/models/base.py
++++ src/models/base.py
+@@ -43,7 +43,7 @@
+     book = relationship("Book", back_populates="loans")
+ 
+ class Payment(Base):
+-    __tablename__ = "payment"
++    __tablename__ = None
+     payment_id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+     member_id: Mapped[int] = mapped_column(ForeignKey("member.member_id"), nullable=False)
+     amount_amt: Mapped[float] = mapped_column(Float, nullable=False)
+</pre><h3>Mutant 109</h3><pre>--- src/models/base.py
++++ src/models/base.py
+@@ -44,7 +44,7 @@
+ 
+ class Payment(Base):
+     __tablename__ = "payment"
+-    payment_id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
++    payment_id: Mapped[int] = mapped_column(Integer, primary_key=False, autoincrement=True)
+     member_id: Mapped[int] = mapped_column(ForeignKey("member.member_id"), nullable=False)
+     amount_amt: Mapped[float] = mapped_column(Float, nullable=False)
+     paid_dt: Mapped[date | None] = mapped_column(Date, nullable=True)
+</pre><h3>Mutant 111</h3><pre>--- src/models/base.py
++++ src/models/base.py
+@@ -44,7 +44,7 @@
+ 
+ class Payment(Base):
+     __tablename__ = "payment"
+-    payment_id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
++    payment_id: Mapped[int] = None
+     member_id: Mapped[int] = mapped_column(ForeignKey("member.member_id"), nullable=False)
+     amount_amt: Mapped[float] = mapped_column(Float, nullable=False)
+     paid_dt: Mapped[date | None] = mapped_column(Date, nullable=True)
+</pre><h3>Mutant 116</h3><pre>--- src/models/base.py
++++ src/models/base.py
+@@ -46,7 +46,7 @@
+     __tablename__ = "payment"
+     payment_id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+     member_id: Mapped[int] = mapped_column(ForeignKey("member.member_id"), nullable=False)
+-    amount_amt: Mapped[float] = mapped_column(Float, nullable=False)
++    amount_amt: Mapped[float] = None
+     paid_dt: Mapped[date | None] = mapped_column(Date, nullable=True)
+     reason_txt: Mapped[str] = mapped_column(String(200), nullable=False)
+     member = relationship("Member", back_populates="payments")
+</pre><h3>Mutant 117</h3><pre>--- src/models/base.py
++++ src/models/base.py
+@@ -47,7 +47,7 @@
+     payment_id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+     member_id: Mapped[int] = mapped_column(ForeignKey("member.member_id"), nullable=False)
+     amount_amt: Mapped[float] = mapped_column(Float, nullable=False)
+-    paid_dt: Mapped[date | None] = mapped_column(Date, nullable=True)
++    paid_dt: Mapped[date & None] = mapped_column(Date, nullable=True)
+     reason_txt: Mapped[str] = mapped_column(String(200), nullable=False)
+     member = relationship("Member", back_populates="payments")
+ 
+</pre><h3>Mutant 119</h3><pre>--- src/models/base.py
++++ src/models/base.py
+@@ -47,7 +47,7 @@
+     payment_id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+     member_id: Mapped[int] = mapped_column(ForeignKey("member.member_id"), nullable=False)
+     amount_amt: Mapped[float] = mapped_column(Float, nullable=False)
+-    paid_dt: Mapped[date | None] = mapped_column(Date, nullable=True)
++    paid_dt: Mapped[date | None] = None
+     reason_txt: Mapped[str] = mapped_column(String(200), nullable=False)
+     member = relationship("Member", back_populates="payments")
+ 
+</pre></body></html>

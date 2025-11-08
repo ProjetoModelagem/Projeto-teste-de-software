@@ -1,0 +1,120 @@
+<html><body><h1>src/utils/settings.py</h1>Killed 0 out of 11 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 289</h3><pre>--- src/utils/settings.py
++++ src/utils/settings.py
+@@ -2,7 +2,7 @@
+ from functools import lru_cache
+ 
+ class Settings(BaseSettings):
+-    app_name: str = "projeto_biblioteca"
++    app_name: str = "XXprojeto_bibliotecaXX"
+     database_url: str = "sqlite:///./library_db.sqlite3"
+     log_level: str = "INFO"
+     reports_dir: str = "./reports"
+</pre><h3>Mutant 290</h3><pre>--- src/utils/settings.py
++++ src/utils/settings.py
+@@ -2,7 +2,7 @@
+ from functools import lru_cache
+ 
+ class Settings(BaseSettings):
+-    app_name: str = "projeto_biblioteca"
++    app_name: str = None
+     database_url: str = "sqlite:///./library_db.sqlite3"
+     log_level: str = "INFO"
+     reports_dir: str = "./reports"
+</pre><h3>Mutant 291</h3><pre>--- src/utils/settings.py
++++ src/utils/settings.py
+@@ -3,7 +3,7 @@
+ 
+ class Settings(BaseSettings):
+     app_name: str = "projeto_biblioteca"
+-    database_url: str = "sqlite:///./library_db.sqlite3"
++    database_url: str = "XXsqlite:///./library_db.sqlite3XX"
+     log_level: str = "INFO"
+     reports_dir: str = "./reports"
+ 
+</pre><h3>Mutant 292</h3><pre>--- src/utils/settings.py
++++ src/utils/settings.py
+@@ -3,7 +3,7 @@
+ 
+ class Settings(BaseSettings):
+     app_name: str = "projeto_biblioteca"
+-    database_url: str = "sqlite:///./library_db.sqlite3"
++    database_url: str = None
+     log_level: str = "INFO"
+     reports_dir: str = "./reports"
+ 
+</pre><h3>Mutant 293</h3><pre>--- src/utils/settings.py
++++ src/utils/settings.py
+@@ -4,7 +4,7 @@
+ class Settings(BaseSettings):
+     app_name: str = "projeto_biblioteca"
+     database_url: str = "sqlite:///./library_db.sqlite3"
+-    log_level: str = "INFO"
++    log_level: str = "XXINFOXX"
+     reports_dir: str = "./reports"
+ 
+     class Config:
+</pre><h3>Mutant 294</h3><pre>--- src/utils/settings.py
++++ src/utils/settings.py
+@@ -4,7 +4,7 @@
+ class Settings(BaseSettings):
+     app_name: str = "projeto_biblioteca"
+     database_url: str = "sqlite:///./library_db.sqlite3"
+-    log_level: str = "INFO"
++    log_level: str = None
+     reports_dir: str = "./reports"
+ 
+     class Config:
+</pre><h3>Mutant 295</h3><pre>--- src/utils/settings.py
++++ src/utils/settings.py
+@@ -5,7 +5,7 @@
+     app_name: str = "projeto_biblioteca"
+     database_url: str = "sqlite:///./library_db.sqlite3"
+     log_level: str = "INFO"
+-    reports_dir: str = "./reports"
++    reports_dir: str = "XX./reportsXX"
+ 
+     class Config:
+         env_file = ".env"
+</pre><h3>Mutant 296</h3><pre>--- src/utils/settings.py
++++ src/utils/settings.py
+@@ -5,7 +5,7 @@
+     app_name: str = "projeto_biblioteca"
+     database_url: str = "sqlite:///./library_db.sqlite3"
+     log_level: str = "INFO"
+-    reports_dir: str = "./reports"
++    reports_dir: str = None
+ 
+     class Config:
+         env_file = ".env"
+</pre><h3>Mutant 297</h3><pre>--- src/utils/settings.py
++++ src/utils/settings.py
+@@ -8,7 +8,7 @@
+     reports_dir: str = "./reports"
+ 
+     class Config:
+-        env_file = ".env"
++        env_file = "XX.envXX"
+ 
+ @lru_cache
+ def get_settings() -> 'Settings':
+</pre><h3>Mutant 298</h3><pre>--- src/utils/settings.py
++++ src/utils/settings.py
+@@ -8,7 +8,7 @@
+     reports_dir: str = "./reports"
+ 
+     class Config:
+-        env_file = ".env"
++        env_file = None
+ 
+ @lru_cache
+ def get_settings() -> 'Settings':
+</pre><h3>Mutant 299</h3><pre>--- src/utils/settings.py
++++ src/utils/settings.py
+@@ -10,6 +10,5 @@
+     class Config:
+         env_file = ".env"
+ 
+-@lru_cache
+ def get_settings() -> 'Settings':
+     return Settings()
+</pre></body></html>

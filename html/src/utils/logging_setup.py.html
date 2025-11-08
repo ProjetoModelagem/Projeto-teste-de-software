@@ -1,0 +1,11 @@
+<html><body><h1>src/utils/logging_setup.py</h1>Killed 1 out of 2 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 288</h3><pre>--- src/utils/logging_setup.py
++++ src/utils/logging_setup.py
+@@ -5,6 +5,6 @@
+     settings = get_settings()
+     logging.basicConfig(
+         level=getattr(logging, settings.log_level.upper(), logging.INFO),
+-        format="%(asctime)s %(levelname)s %(name)s :: %(message)s",
++        format="XX%(asctime)s %(levelname)s %(name)s :: %(message)sXX",
+     )
+ 
+</pre></body></html>

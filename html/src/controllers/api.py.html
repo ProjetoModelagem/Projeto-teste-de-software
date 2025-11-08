@@ -1,0 +1,12 @@
+<html><body><h1>src/controllers/api.py</h1>Killed 0 out of 1 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 300</h3><pre>--- src/controllers/api.py
++++ src/controllers/api.py
+@@ -21,7 +21,7 @@
+ # Schemas de entrada usados pelos endpoints
+ # -------------------------------------------------
+ class AuthorIn(BaseModel):
+-    author_nm: str = None
++    author_nm: str = ""
+     country_nm: str | None = None
+ 
+ class BookIn(BaseModel):
+</pre></body></html>

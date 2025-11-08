@@ -1,0 +1,24 @@
+To apply a mutant on disk:
+    mutmut apply <id>
+
+To show a mutant:
+    mutmut show <id>
+
+
+Survived 🙁 (27)
+
+---- src/models/base.py (21) ----
+
+31-32, 34, 45-46, 48, 67-68, 70, 86-87, 89, 98-99, 101, 109-110, 112, 117-118, 120
+
+---- src/models/db.py (3) ----
+
+131, 136, 138
+
+---- src/repositories/repository.py (2) ----
+
+22-23
+
+---- src/services/library.py (1) ----
+
+21

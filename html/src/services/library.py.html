@@ -1,0 +1,243 @@
+<html><body><h1>src/services/library.py</h1>Killed 0 out of 22 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 302</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -33,7 +33,7 @@
+ 
+         # Regra 3: bloquear empréstimo se houver pagamentos pendentes
+         if self.members.has_pending_payments(member_id):
+-            raise BusinessError("membro_com_pendência_financeira_flg")
++            raise BusinessError("XXmembro_com_pendência_financeira_flgXX")
+ 
+         due = date.today() + timedelta(days=days_nbr)  # Regra 2 (due date automático)
+         return self.loans.add(Loan(member_id=member_id, book_id=book_id, due_dt=due))
+</pre><h3>Mutant 303</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -41,7 +41,7 @@
+     def close_loan(self, loan_id: int, return_dt: date | None=None) -> Loan:
+         loan = self.loans.get(loan_id)
+         if not loan:
+-            raise BusinessError("emprestimo_nao_encontrado_flg")
++            raise BusinessError("XXemprestimo_nao_encontrado_flgXX")
+         loan.return_dt = return_dt or date.today()
+ 
+         # Regra 2: multa R$2 por dia de atraso
+</pre><h3>Mutant 304</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -53,7 +53,7 @@
+         return loan
+ 
+     def pay_payment(self, payment_id: int) -> Payment:
+-        p = self.payments.get(payment_id)
++        p = None
+         if not p: raise BusinessError("pagamento_nao_encontrado_flg")
+         p.paid_dt = date.today()
+         self.payments.session.commit()
+</pre><h3>Mutant 305</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -54,7 +54,7 @@
+ 
+     def pay_payment(self, payment_id: int) -> Payment:
+         p = self.payments.get(payment_id)
+-        if not p: raise BusinessError("pagamento_nao_encontrado_flg")
++        if  p: raise BusinessError("pagamento_nao_encontrado_flg")
+         p.paid_dt = date.today()
+         self.payments.session.commit()
+         self.payments.session.refresh(p)
+</pre><h3>Mutant 306</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -54,7 +54,7 @@
+ 
+     def pay_payment(self, payment_id: int) -> Payment:
+         p = self.payments.get(payment_id)
+-        if not p: raise BusinessError("pagamento_nao_encontrado_flg")
++        if not p: raise BusinessError("XXpagamento_nao_encontrado_flgXX")
+         p.paid_dt = date.today()
+         self.payments.session.commit()
+         self.payments.session.refresh(p)
+</pre><h3>Mutant 307</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -55,7 +55,7 @@
+     def pay_payment(self, payment_id: int) -> Payment:
+         p = self.payments.get(payment_id)
+         if not p: raise BusinessError("pagamento_nao_encontrado_flg")
+-        p.paid_dt = date.today()
++        p.paid_dt = None
+         self.payments.session.commit()
+         self.payments.session.refresh(p)
+         return p
+</pre><h3>Mutant 308</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -69,7 +69,7 @@
+ 
+     # Export (manipulação de arquivos)
+     def export_loans_report_csv(self, path: str | None=None) -> str:
+-        settings = get_settings()
++        settings = None
+         reports_dir = settings.reports_dir
+         os.makedirs(reports_dir, exist_ok=True)
+         fname = path or os.path.join(reports_dir, "loans_report.csv")
+</pre><h3>Mutant 309</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -70,7 +70,7 @@
+     # Export (manipulação de arquivos)
+     def export_loans_report_csv(self, path: str | None=None) -> str:
+         settings = get_settings()
+-        reports_dir = settings.reports_dir
++        reports_dir = None
+         os.makedirs(reports_dir, exist_ok=True)
+         fname = path or os.path.join(reports_dir, "loans_report.csv")
+         with open(fname, "w", newline="", encoding="utf-8") as f:
+</pre><h3>Mutant 310</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -71,7 +71,7 @@
+     def export_loans_report_csv(self, path: str | None=None) -> str:
+         settings = get_settings()
+         reports_dir = settings.reports_dir
+-        os.makedirs(reports_dir, exist_ok=True)
++        os.makedirs(reports_dir, exist_ok=False)
+         fname = path or os.path.join(reports_dir, "loans_report.csv")
+         with open(fname, "w", newline="", encoding="utf-8") as f:
+             w = csv.writer(f)
+</pre><h3>Mutant 311</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -72,7 +72,7 @@
+         settings = get_settings()
+         reports_dir = settings.reports_dir
+         os.makedirs(reports_dir, exist_ok=True)
+-        fname = path or os.path.join(reports_dir, "loans_report.csv")
++        fname = path or os.path.join(reports_dir, "XXloans_report.csvXX")
+         with open(fname, "w", newline="", encoding="utf-8") as f:
+             w = csv.writer(f)
+             w.writerow(["loan_id", "member_id", "book_id", "start_dt", "due_dt", "return_dt"])
+</pre><h3>Mutant 312</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -72,7 +72,7 @@
+         settings = get_settings()
+         reports_dir = settings.reports_dir
+         os.makedirs(reports_dir, exist_ok=True)
+-        fname = path or os.path.join(reports_dir, "loans_report.csv")
++        fname = path and os.path.join(reports_dir, "loans_report.csv")
+         with open(fname, "w", newline="", encoding="utf-8") as f:
+             w = csv.writer(f)
+             w.writerow(["loan_id", "member_id", "book_id", "start_dt", "due_dt", "return_dt"])
+</pre><h3>Mutant 313</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -72,7 +72,7 @@
+         settings = get_settings()
+         reports_dir = settings.reports_dir
+         os.makedirs(reports_dir, exist_ok=True)
+-        fname = path or os.path.join(reports_dir, "loans_report.csv")
++        fname = None
+         with open(fname, "w", newline="", encoding="utf-8") as f:
+             w = csv.writer(f)
+             w.writerow(["loan_id", "member_id", "book_id", "start_dt", "due_dt", "return_dt"])
+</pre><h3>Mutant 314</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -73,7 +73,7 @@
+         reports_dir = settings.reports_dir
+         os.makedirs(reports_dir, exist_ok=True)
+         fname = path or os.path.join(reports_dir, "loans_report.csv")
+-        with open(fname, "w", newline="", encoding="utf-8") as f:
++        with open(fname, "XXwXX", newline="", encoding="utf-8") as f:
+             w = csv.writer(f)
+             w.writerow(["loan_id", "member_id", "book_id", "start_dt", "due_dt", "return_dt"])
+             for l in self.loans.list():
+</pre><h3>Mutant 315</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -73,7 +73,7 @@
+         reports_dir = settings.reports_dir
+         os.makedirs(reports_dir, exist_ok=True)
+         fname = path or os.path.join(reports_dir, "loans_report.csv")
+-        with open(fname, "w", newline="", encoding="utf-8") as f:
++        with open(fname, "w", newline="XXXX", encoding="utf-8") as f:
+             w = csv.writer(f)
+             w.writerow(["loan_id", "member_id", "book_id", "start_dt", "due_dt", "return_dt"])
+             for l in self.loans.list():
+</pre><h3>Mutant 316</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -73,7 +73,7 @@
+         reports_dir = settings.reports_dir
+         os.makedirs(reports_dir, exist_ok=True)
+         fname = path or os.path.join(reports_dir, "loans_report.csv")
+-        with open(fname, "w", newline="", encoding="utf-8") as f:
++        with open(fname, "w", newline="", encoding="XXutf-8XX") as f:
+             w = csv.writer(f)
+             w.writerow(["loan_id", "member_id", "book_id", "start_dt", "due_dt", "return_dt"])
+             for l in self.loans.list():
+</pre><h3>Mutant 317</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -74,7 +74,7 @@
+         os.makedirs(reports_dir, exist_ok=True)
+         fname = path or os.path.join(reports_dir, "loans_report.csv")
+         with open(fname, "w", newline="", encoding="utf-8") as f:
+-            w = csv.writer(f)
++            w = None
+             w.writerow(["loan_id", "member_id", "book_id", "start_dt", "due_dt", "return_dt"])
+             for l in self.loans.list():
+                 w.writerow([l.loan_id, l.member_id, l.book_id, l.start_dt, l.due_dt, l.return_dt])
+</pre><h3>Mutant 318</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -75,7 +75,7 @@
+         fname = path or os.path.join(reports_dir, "loans_report.csv")
+         with open(fname, "w", newline="", encoding="utf-8") as f:
+             w = csv.writer(f)
+-            w.writerow(["loan_id", "member_id", "book_id", "start_dt", "due_dt", "return_dt"])
++            w.writerow(["XXloan_idXX", "member_id", "book_id", "start_dt", "due_dt", "return_dt"])
+             for l in self.loans.list():
+                 w.writerow([l.loan_id, l.member_id, l.book_id, l.start_dt, l.due_dt, l.return_dt])
+         return fname
+</pre><h3>Mutant 319</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -75,7 +75,7 @@
+         fname = path or os.path.join(reports_dir, "loans_report.csv")
+         with open(fname, "w", newline="", encoding="utf-8") as f:
+             w = csv.writer(f)
+-            w.writerow(["loan_id", "member_id", "book_id", "start_dt", "due_dt", "return_dt"])
++            w.writerow(["loan_id", "XXmember_idXX", "book_id", "start_dt", "due_dt", "return_dt"])
+             for l in self.loans.list():
+                 w.writerow([l.loan_id, l.member_id, l.book_id, l.start_dt, l.due_dt, l.return_dt])
+         return fname
+</pre><h3>Mutant 320</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -75,7 +75,7 @@
+         fname = path or os.path.join(reports_dir, "loans_report.csv")
+         with open(fname, "w", newline="", encoding="utf-8") as f:
+             w = csv.writer(f)
+-            w.writerow(["loan_id", "member_id", "book_id", "start_dt", "due_dt", "return_dt"])
++            w.writerow(["loan_id", "member_id", "XXbook_idXX", "start_dt", "due_dt", "return_dt"])
+             for l in self.loans.list():
+                 w.writerow([l.loan_id, l.member_id, l.book_id, l.start_dt, l.due_dt, l.return_dt])
+         return fname
+</pre><h3>Mutant 321</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -75,7 +75,7 @@
+         fname = path or os.path.join(reports_dir, "loans_report.csv")
+         with open(fname, "w", newline="", encoding="utf-8") as f:
+             w = csv.writer(f)
+-            w.writerow(["loan_id", "member_id", "book_id", "start_dt", "due_dt", "return_dt"])
++            w.writerow(["loan_id", "member_id", "book_id", "XXstart_dtXX", "due_dt", "return_dt"])
+             for l in self.loans.list():
+                 w.writerow([l.loan_id, l.member_id, l.book_id, l.start_dt, l.due_dt, l.return_dt])
+         return fname
+</pre><h3>Mutant 322</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -75,7 +75,7 @@
+         fname = path or os.path.join(reports_dir, "loans_report.csv")
+         with open(fname, "w", newline="", encoding="utf-8") as f:
+             w = csv.writer(f)
+-            w.writerow(["loan_id", "member_id", "book_id", "start_dt", "due_dt", "return_dt"])
++            w.writerow(["loan_id", "member_id", "book_id", "start_dt", "XXdue_dtXX", "return_dt"])
+             for l in self.loans.list():
+                 w.writerow([l.loan_id, l.member_id, l.book_id, l.start_dt, l.due_dt, l.return_dt])
+         return fname
+</pre><h3>Mutant 323</h3><pre>--- src/services/library.py
++++ src/services/library.py
+@@ -75,7 +75,7 @@
+         fname = path or os.path.join(reports_dir, "loans_report.csv")
+         with open(fname, "w", newline="", encoding="utf-8") as f:
+             w = csv.writer(f)
+-            w.writerow(["loan_id", "member_id", "book_id", "start_dt", "due_dt", "return_dt"])
++            w.writerow(["loan_id", "member_id", "book_id", "start_dt", "due_dt", "XXreturn_dtXX"])
+             for l in self.loans.list():
+                 w.writerow([l.loan_id, l.member_id, l.book_id, l.start_dt, l.due_dt, l.return_dt])
+         return fname
+</pre></body></html>
