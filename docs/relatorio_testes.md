@@ -69,15 +69,15 @@
 - **Orientação a Objetos (OO)** — [test_oop_design.py](https://github.com/ProjetoModelagem/Projeto-teste-de-software/blob/main/tests/unit/test_oop_design.py)
 
 ## 4.8 Screenshots das Evidências
+
 | Unidade | Integração | Funcional |
 |:--:|:--:|:--:|
-| ![Unit]((https://github.com/ProjetoModelagem/Projeto-teste-de-software/test-unit.png) | ![Integration]((https://github.com/ProjetoModelagem/Projeto-teste-de-software/test-integration.png) | ![Functional]((https://github.com/ProjetoModelagem/Projeto-teste-de-software/test-functional.png) |
+| ![Unit](../test-unit.png) | ![Integration](../test-integration.png) | ![Functional](../test-functional.png) |
 
 **Cobertura & Mutação**
 
-![Cobertura]((https://github.com/ProjetoModelagem/Projeto-teste-de-software/coverage.png)
-![Mutação]((https://github.com/ProjetoModelagem/Projeto-teste-de-software/mutant-test.png)
-
+![Cobertura](../coverage.png)
+![Mutação](../mutant-test.png)
 
 ## 5. Conclusão
 - **Meta de cobertura atingida** (≥ 80%).
