@@ -76,10 +76,10 @@
 
 **Cobertura & Mutação**
 
-- Cobertura
+### Cobertura
 ![Cobertura](../coverage.png)
 
-- Mutação
+### Mutação
 ![Mutação](../mutant-test.png)
 
 ## 5. Conclusão
