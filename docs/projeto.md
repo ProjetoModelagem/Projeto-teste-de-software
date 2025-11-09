@@ -31,7 +31,7 @@ O objetivo deste projeto é demonstrar domínio de engenharia de software + vali
 
 ## Arquitetura (Visão Simplificada)
 
-![Diagrama da Arquitetura](./diagrama.png)
+![Diagrama da Arquitetura](../diagrama.png)
 
 ## Diferenciais Técnicos do Projeto
 - Testes Automatizados em múltiplos níveis
