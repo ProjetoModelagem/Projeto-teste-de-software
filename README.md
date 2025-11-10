@@ -16,6 +16,18 @@
 # Projeto – Sistema de Biblioteca - Simulação e Teste de Software (CC8550)  
 Checklist de Requisitos + Evidências + Justificativas Mutação
 
+
+# Como rodar a interface
+
+Consegui apenas testar pelo ubuntu, pois no powershell da problema com adm
+```bash
+cd caminho do arquivo
+source .venv/bin/activate
+uvicorn src.controllers.api:app --reload --port 8000
+```
+E depois entre na http://127.0.0.1:8000
+<img width="700" height="700" alt="image" src="https://github.com/user-attachments/assets/df39a2dc-b6a6-4775-a274-70582b7914fb" />
+
 ## 1) Arquitetura e Estrutura
 | Requisito | Status | Evidência |
 |----------|--------|-----------|
