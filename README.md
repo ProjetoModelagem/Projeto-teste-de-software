@@ -26,6 +26,7 @@ source .venv/bin/activate
 uvicorn src.controllers.api:app --reload --port 8000
 ```
 E depois entre na http://127.0.0.1:8000
+
 <img width="700" height="700" alt="image" src="https://github.com/user-attachments/assets/df39a2dc-b6a6-4775-a274-70582b7914fb" />
 
 ## 1) Arquitetura e Estrutura
