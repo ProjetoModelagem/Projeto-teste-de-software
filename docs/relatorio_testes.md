@@ -82,6 +82,11 @@
 ### Mutação
 ![Mutação](../mutant-test.png)
 
+## 4.9 Execução da API
+
+<img width="700" height="700" alt="image" src="https://github.com/user-attachments/assets/bc69f14f-549c-4eb9-80f1-4ee43f2b509b" />
+
+
 ## 5. Conclusão
 - **Meta de cobertura atingida** (≥ 80%).
 - Regras essenciais validadas (limite empréstimos, pendências, multa).
