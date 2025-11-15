@@ -53,13 +53,13 @@ Esses estão descritos no doc relatorio_testes.md e é só trocar o nome do arqu
 
 ```bash
 pytest tests/integration/test_performance_benchmark.py `
->>   --benchmark-save bench_run `
->>   --benchmark-autosave `
->>   --benchmark-json "evidencias/benchmark.json" `
->>   --benchmark-only `
->>   --benchmark-min-rounds 5 `                                      
->>   --html "evidencias/benchmark_report.html" `
->>   --self-contained-html
+--benchmark-save bench_run `
+--benchmark-autosave `
+--benchmark-json "evidencias/benchmark.json" `
+--benchmark-only `
+--benchmark-min-rounds 5 `                                      
+--html "evidencias/benchmark_report.html" `
+--self-contained-html
 ```
 ```bash
 pytest -vv tests/unit/test_service_with_mocks.py tests/unit/test_oop_design.py
