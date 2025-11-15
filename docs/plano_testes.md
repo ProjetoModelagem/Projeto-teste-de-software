@@ -1,5 +1,66 @@
 # Plano de Testes - Sistema Biblioteca (FastAPI)
 
+## Comandos para testar o projeto (localmente)
+
+Instalar as dependencias
+```bash
+pip install --upgrade pip wheel setuptools
+pip install -r config/requirements.txt
+pip install 'pydantic[email]'
+pip install pytest pytest-cov pytest-benchmark
+```
+
+Teste unitário
+```bash
+pytest tests/unit `       
+--cov=src --cov-branch `
+--cov-report=term-missing `                                                  
+--cov-report=html:htmlcov_unit `       
+--junitxml="evidencias\junit_unit.xml" `       
+--html="evidencias\report_unit.html" --self-contained-html       
+start .\htmlcov_unit\index.html 
+```
+
+Teste de integração
+```bash
+pytest tests/integration `
+--cov=src --cov-branch `
+--cov-report=term-missing `                                                  
+--cov-report=html:htmlcov_integration `
+--junitxml="evidencias\junit_integration.xml" `
+--html="evidencias\report_integration.html" --self-contained-html
+start .\htmlcov_integration\index.html
+```
+
+Teste funcional
+```bash
+pytest tests/functional `
+--cov=src --cov-branch `
+--cov-report=term-missing `                                                 
+--cov-report=html:htmlcov_functional ` 
+--junitxml="evidencias\junit_functional.xml" ` 
+--html="evidencias\functional_report.html" --self-contained-html 
+start .\htmlcov_functional\index.html 
+```
+
+Testes de mutação
+
+[mutation/README.md](tests/mutation/README.md) |
+
+
+# Como rodar a interface
+
+Consegui apenas testar pelo ubuntu, pois no powershell da problema com adm
+```bash
+cd caminho do arquivo
+source .venv/bin/activate
+uvicorn src.controllers.api:app --reload --port 8000
+```
+E depois entre na http://127.0.0.1:8000
+
+<img width="700" height="700" alt="image" src="https://github.com/user-attachments/assets/df39a2dc-b6a6-4775-a274-70582b7914fb" />
+
+
 ## 1. Contexto
 API de Biblioteca com arquitetura modular (Controllers → Service → Repository → SQLite/SQLAlchemy). Foco em qualidade com testes automatizados em múltiplos níveis.
 
