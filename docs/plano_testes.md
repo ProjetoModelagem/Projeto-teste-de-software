@@ -10,37 +10,21 @@ pip install 'pydantic[email]'
 pip install pytest pytest-cov pytest-benchmark
 ```
 
+#### OBS - Coloquei para abrir o html automático nos comandos.
+
 ### Teste unitário
 ```bash
-pytest tests/unit `       
---cov=src --cov-branch `
---cov-report=term-missing `                                                  
---cov-report=html:htmlcov_unit `       
---junitxml="evidencias\junit_unit.xml" `       
---html="evidencias\report_unit.html" --self-contained-html       
-start .\htmlcov_unit\index.html 
+pytest tests/unit --cov=src --cov-branch --cov-report=term-missing --cov-report=html:htmlcov_unit --junitxml="evidencias/junit_unit.xml" --html="evidencias/report_unit.html" --self-contained-html; start htmlcov_unit/index.html
 ```
 
 ### Teste de integração
 ```bash
-pytest tests/integration `
---cov=src --cov-branch `
---cov-report=term-missing `                                                  
---cov-report=html:htmlcov_integration `
---junitxml="evidencias\junit_integration.xml" `
---html="evidencias\report_integration.html" --self-contained-html
-start .\htmlcov_integration\index.html
+pytest tests/integration --cov=src --cov-branch --cov-report=term-missing --cov-report=html:htmlcov_integration --junitxml="evidencias/junit_integration.xml" --html="evidencias/report_integration.html" --self-contained-html; start htmlcov_integration/index.html
 ```
 
 ### Teste funcional
 ```bash
-pytest tests/functional `
---cov=src --cov-branch `
---cov-report=term-missing `                                                 
---cov-report=html:htmlcov_functional ` 
---junitxml="evidencias\junit_functional.xml" ` 
---html="evidencias\functional_report.html" --self-contained-html 
-start .\htmlcov_functional\index.html 
+pytest tests/functional --cov=src --cov-branch --cov-report=term-missing --cov-report=html:htmlcov_functional --junitxml="evidencias/junit_functional.xml" --html="evidencias/functional_report.html" --self-contained-html; start htmlcov_functional/index.html
 ```
 
 ### Testes de mutação
