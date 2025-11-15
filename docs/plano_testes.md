@@ -2,7 +2,7 @@
 
 ## Comandos para testar o projeto (localmente)
 
-Instalar as dependencias
+###Instalar as dependencias
 ```bash
 pip install --upgrade pip wheel setuptools
 pip install -r config/requirements.txt
@@ -10,7 +10,7 @@ pip install 'pydantic[email]'
 pip install pytest pytest-cov pytest-benchmark
 ```
 
-Teste unitário
+###Teste unitário
 ```bash
 pytest tests/unit `       
 --cov=src --cov-branch `
@@ -21,7 +21,7 @@ pytest tests/unit `
 start .\htmlcov_unit\index.html 
 ```
 
-Teste de integração
+###Teste de integração
 ```bash
 pytest tests/integration `
 --cov=src --cov-branch `
@@ -32,7 +32,7 @@ pytest tests/integration `
 start .\htmlcov_integration\index.html
 ```
 
-Teste funcional
+###Teste funcional
 ```bash
 pytest tests/functional `
 --cov=src --cov-branch `
@@ -43,12 +43,12 @@ pytest tests/functional `
 start .\htmlcov_functional\index.html 
 ```
 
-Testes de mutação
+###Testes de mutação
 
 [mutation/README.md](tests/mutation/README.md) |
 
 
-# Como rodar a interface
+### Como rodar a "interface"
 
 Consegui apenas testar pelo ubuntu, pois no powershell da problema com adm
 ```bash
